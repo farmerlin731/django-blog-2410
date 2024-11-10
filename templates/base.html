@@ -1,3 +1,5 @@
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,16 +13,16 @@
                 web
             {% endblock subtitle %}
         </title>
+        {% bootstrap_css %}
+
     </head>
 
     <body>
-        <p>
-            base.html start
-        </p>
-        {% block body %}
-        {% endblock body %}
-        <p>
-            base.html end
-        </p>
+        <div class="container mt-3">
+            {% bootstrap_messages %}
+            {% block body %}
+            {% endblock body %}
+        </div>
+        {% bootstrap_javascript %}
     </body>
 </html>
