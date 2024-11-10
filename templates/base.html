@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Django Website">
+        <meta name="keywords" content="Django, Website">
+        <title>
+            Django -
+            {% block subtitle %}
+                web
+            {% endblock subtitle %}
+        </title>
+    </head>
+
+    <body>
+        <p>
+            base.html start
+        </p>
+        {% block body %}
+        {% endblock body %}
+        <p>
+            base.html end
+        </p>
+    </body>
+</html>
