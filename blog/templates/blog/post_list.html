@@ -1,6 +1,50 @@
 {% extends "blog_base.html" %}
+
+{% block page_header %}
+    post_list_farmer_1130
+{% endblock page_header %}
+
 {% block content %}
-    <h1>
-        ok_tmp
-    </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    #
+                </th>
+                <th scope="col">
+                    Title
+                </th>
+                <th scope="col">
+                    Created At
+                </th>
+                <th scope="col">
+                    Category
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <th scope="row">
+                        {{ post.id }}
+                    </th>
+                    <td>
+                        {{ post.title }}
+                    </td>
+                    <td>
+                        {{ post.created_at }}
+                    </td>
+                    <td>
+                        {{ post.category.name }}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <th colspan="4">
+                        No post yet.
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}

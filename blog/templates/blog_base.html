@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 
 {% block subtitle %}
-    blog
 {% endblock subtitle %}
 
 {% block body %}
-    <p>
-        blog_base.html start
-    </p>
+    <h1>
+        Blog@base -
+        {% block page_header %}
+        {% endblock page_header %}
+    </h1>
+    <hr>
     {% block content %}
     {% endblock content %}
-    <p>
-        blog_base.html end
-    </p>
 {% endblock body %}
