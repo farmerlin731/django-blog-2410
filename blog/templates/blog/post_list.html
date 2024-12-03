@@ -5,6 +5,14 @@
 {% endblock page_header %}
 
 {% block content %}
+
+    <a class="btn btn-primary"
+       {% comment %}
+       href="{% url "blog:post-create" %}"
+       {% endcomment %}
+       href="{% url "blog:post-create" %}"
+       role="button">Post Create</a>
+
     <table class="table table-striped">
         <thead>
             <tr>
