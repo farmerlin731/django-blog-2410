@@ -1,13 +1,16 @@
 {% extends "blog_base.html" %}
 
+{% load django_bootstrap5 %}
+
 {% block page_header %}
     Post - Create Page
 {% endblock page_header %}
 
 {% block content %}
-
-    <p>
-        hello world :)
-    </p>
-
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="OK" %}
+        {% bootstrap_button button_type="reset" content="Cancel" %}
+    </form>
 {% endblock content %}
