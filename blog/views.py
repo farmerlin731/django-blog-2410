@@ -15,9 +15,9 @@ def post_list(request):
 def post_create(request):
     form = PostForm(request.POST or None)
 
-    # if form.is_valid():
-    #     form.save()
-    #     messages.success(request, "Post create success.")
-    #     return redirect("blog:post-list")
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Post create success.")
+        return redirect("blog:post-list")
 
     return render(request, "blog/post_create.html", {"form": form})
