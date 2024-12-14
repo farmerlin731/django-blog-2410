@@ -7,8 +7,8 @@ from blog.models import Post
 
 # Create your views here.
 def post_list(request):
-    # return render(request, "blog/post_list.html")
-    posts = Post.objects.all()
+    # posts = Post.objects.all()
+    posts = Post.objects.select_related("category")
     return render(request, "blog/post_list.html", {"posts": posts})
 
 
