@@ -4,12 +4,25 @@
 {% endblock subtitle %}
 
 {% block body %}
-    <h1>
+    <div class="row">
+        <div class="{% block page_size %}col-12{% endblock page_size %}">
+            <h1>
+                Blog -
+                {% block page_header %}
+                {% endblock page_header %}
+            </h1>
+            <hr>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+
+    {% comment %} <h1>
         Blog@base -
         {% block page_header %}
         {% endblock page_header %}
     </h1>
     <hr>
     {% block content %}
-    {% endblock content %}
+    {% endblock content %} {% endcomment %}
 {% endblock body %}
