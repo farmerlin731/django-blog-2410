@@ -26,3 +26,15 @@ def post_create(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, "blog/post_detail.html", {"post": post})
+
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    form = PostForm(request.POST or None, instance=post)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Post update success.")
+        return redirect("blog:post-detail", pk=pk)
+
+    return render(request, "blog/post_update.html", {"form": form})

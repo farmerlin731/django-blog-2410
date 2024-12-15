@@ -1,0 +1,21 @@
+{% extends "blog_base.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+    Post - Update Page
+{% endblock page_header %}
+
+{% block page_size %}
+    col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4
+{% endblock page_size %}
+
+{% block content %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="OK" %}
+        {% bootstrap_button button_type="reset" content="Cancel" %}
+    </form>
+
+{% endblock content %}
