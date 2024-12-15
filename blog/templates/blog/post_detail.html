@@ -8,6 +8,9 @@
     <a class="btn btn-primary mb-4"
        href="{% url "blog:post-update" pk=post.pk %}"
        role="button">Update</a>
+    <a class="btn btn-outline-danger mb-4"
+       href="{% url "blog:post-delete" pk=post.pk %}"
+       role="button">Delete</a>
     <br />
     -Title-:
     <br />
