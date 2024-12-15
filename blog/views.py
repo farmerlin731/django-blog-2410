@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from blog.forms import PostForm
 from blog.models import Post
@@ -21,3 +21,8 @@ def post_create(request):
         return redirect("blog:post-list")
 
     return render(request, "blog/post_create.html", {"form": form})
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, "blog/post_detail.html", {"post": post})

@@ -1,0 +1,14 @@
+{% extends "blog_base.html" %}
+
+{% block page_header %}
+    {{ post.title }}
+{% endblock page_header %}
+
+{% block content %}
+    <p>
+        Hello, this is a detail page.
+        the title is {{ post.title }}.
+        the pk ius {{ post.pk }}
+
+    </p>
+{% endblock content %}
