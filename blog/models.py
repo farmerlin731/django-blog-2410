@@ -30,8 +30,13 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        related_name="posts",
+    )
+
+    tags = models.ManyToManyField(Tag, related_name="posts")
 
     def __str__(self) -> str:
         return self.title
@@ -43,7 +48,11 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
 
     def __str__(self) -> str:
         return self.content
