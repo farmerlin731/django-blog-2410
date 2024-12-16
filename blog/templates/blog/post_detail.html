@@ -11,12 +11,18 @@
     <a class="btn btn-outline-danger mb-4"
        href="{% url "blog:post-delete" pk=post.pk %}"
        role="button">Delete</a>
-    <br />
+    <hr>
     -Title-:
     <br />
     {{ post.title }}
     {{ tmp }}
-    <br />
+    <hr>
     -Content-:
     {{ post.content|linebreaks }}
+    <hr>
+    -Tags-:
+    {{ post.tags.all|join:", " }}
+    <hr>
+    -Category-:
+    {{ post.category.name }}
 {% endblock content %}
