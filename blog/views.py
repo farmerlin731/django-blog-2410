@@ -9,7 +9,8 @@ from core.forms import DeleteConfirmForm
 # Create your views here.
 def post_list(request):
     # posts = Post.objects.all()
-    posts = Post.objects.select_related("category")
+    # posts = Post.objects.select_related("category")
+    posts = Post.objects.select_related("category").prefetch_related("tags")
     return render(request, "blog/post_list.html", {"posts": posts})
 
 
