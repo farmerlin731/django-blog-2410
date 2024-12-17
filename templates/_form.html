@@ -1,0 +1,20 @@
+{% load django_bootstrap5 %}
+
+{% with form_method=form_method|default:"post"|lower %}
+    <form action="{{ form_action|default:"" }}"
+          method="{{ form_method }}"
+          class="form">
+
+        {% if form_method == 'post' %}
+            {% csrf_token %}
+        {% endif %}
+
+        {% bootstrap_form form %}
+
+        {% bootstrap_button button_type="submit" content="OK" %}
+
+        {% if show_form_cancel_button %}
+            {% bootstrap_button button_type="reset" content="Cancel" %}
+        {% endif %}
+    </form>
+{% endwith %}

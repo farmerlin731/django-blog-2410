@@ -1,6 +1,6 @@
 {% extends "blog_base.html" %}
 
-{% load django_bootstrap5 %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
 
 {% block page_header %}
     Post - Create Page
@@ -11,11 +11,11 @@
 {% endblock page_size %}
 
 {% block content %}
-    <form action="" method="post" class="form">
+    {% comment %} <form action="" method="post" class="form">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% bootstrap_button button_type="submit" content="OK" %}
         {% bootstrap_button button_type="reset" content="Cancel" %}
-    </form>
-
+    </form> {% endcomment %}
+    {% include "_form.html" with show_form_cancel_button=True %}
 {% endblock content %}
