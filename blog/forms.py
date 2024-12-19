@@ -4,6 +4,9 @@ from blog.models import Post
 
 
 class PostForm(forms.ModelForm):
+    # Custom field which doesn't exist in model, but u still need in form-table.
+    check = forms.BooleanField(required=True, label="你同意嗎？")
+
     class Meta:
         model = Post
         fields = ("title", "content", "category", "tags")
@@ -21,6 +24,7 @@ class PostForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        # There is an attribute 'check' @ cleaned-data.
         title = cleaned_data.get("title", "")
         content = cleaned_data.get("content", "")
         if (len(title) + len(content)) <= 10:
