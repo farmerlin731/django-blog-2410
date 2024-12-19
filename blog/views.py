@@ -19,12 +19,12 @@ def post_create(request):
 
     if form.is_valid():
         # print("view", form.cleaned_data)
-        # form.save()
-        post = form.save(commit=False)
-        post.category = Category.objects.first()
-        post.save()
-        # U should add the following line, if there is a field with many-to-many.
-        form.save_m2m()
+        form.save()
+        # post = form.save(commit=False)
+        # post.category = Category.objects.first()
+        # post.save()
+        # # U should add the following line, if there is a field with many-to-many.
+        # form.save_m2m()
 
         messages.success(request, "Post create success.")
         return redirect("blog:post-list")
