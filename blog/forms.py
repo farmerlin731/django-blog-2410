@@ -10,3 +10,19 @@ class PostForm(forms.ModelForm):
         widgets = {
             "tags": forms.CheckboxSelectMultiple,
         }
+
+    # For Validation.
+    # The name is extended from parent!
+    def clean_title(self):
+        title = self.cleaned_data["title"]
+        if not title.startswith("ABC"):
+            raise forms.ValidationError("你的文章標題需要以 ABC 開頭")
+        return title + " end"
+
+    def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data.get("title", "")
+        content = cleaned_data.get("content", "")
+        if (len(title) + len(content)) <= 10:
+            raise forms.ValidationError("文章太短")
+        return cleaned_data
