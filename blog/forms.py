@@ -1,6 +1,6 @@
 from django import forms
 
-from blog.models import Post
+from blog.models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
@@ -35,3 +35,12 @@ class PostForm(forms.ModelForm):
         if (len(title) + len(content)) <= 10:
             raise forms.ValidationError("文章太短")
         return cleaned_data
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = (
+            "nick_name",
+            "content",
+        )

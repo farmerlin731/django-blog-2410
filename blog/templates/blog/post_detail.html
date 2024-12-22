@@ -52,4 +52,7 @@
             {% endfor %}
         </ul>
     </div>
+
+    {% url "blog:post-create-comment" post_pk=post.pk as form_action %}
+    {% include "_form.html" with form=comment_form form_action=form_action %}
 {% endblock content %}

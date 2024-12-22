@@ -9,4 +9,9 @@ urlpatterns = [
     path("posts/<int:pk>/", blog_views.post_detail, name="post-detail"),
     path("posts/<int:pk>/update/", blog_views.post_update, name="post-update"),
     path("posts/<int:pk>/delete/", blog_views.post_delete, name="post-delete"),
+    path(
+        "posts/<int:post_pk>/comment/",
+        blog_views.post_create_comment,
+        name="post-create-comment",
+    ),
 ]
