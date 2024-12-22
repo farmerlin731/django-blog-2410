@@ -5,6 +5,11 @@
 {% endblock page_header %}
 
 {% block content %}
+    <div class="row mb-3">
+        <div class="col-12">
+            {% include "_form.html" with form_method="get" form=post_filter.form %}
+        </div>
+    </div>
 
     <a class="btn btn-primary"
        {% comment %}
@@ -37,7 +42,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for post in posts %}
+            {% for post in post_filter.qs %}
                 <tr>
                     <th scope="row">
                         {{ post.id }}

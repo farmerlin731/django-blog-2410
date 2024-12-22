@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
+from blog.filters import PostFilter
 from blog.forms import CommentForm, PostForm
 from blog.models import Category, Post
 from core.forms import DeleteConfirmForm
@@ -8,10 +9,15 @@ from core.forms import DeleteConfirmForm
 
 # Create your views here.
 def post_list(request):
-    # posts = Post.objects.all()
-    # posts = Post.objects.select_related("category")
-    posts = Post.objects.select_related("category").prefetch_related("tags")
-    return render(request, "blog/post_list.html", {"posts": posts})
+    # Remove the following because we add the filter.
+    # posts = Post.objects.select_related("category").prefetch_related("tags")
+    # return render(request, "blog/post_list.html", {"posts": posts})
+
+    post_filter = PostFilter(
+        request.GET or None,
+        queryset=Post.objects.select_related("category").prefetch_related("tags"),
+    )
+    return render(request, "blog/post_list.html", {"post_filter": post_filter})
 
 
 def post_create(request):
