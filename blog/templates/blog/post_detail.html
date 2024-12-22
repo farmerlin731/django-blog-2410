@@ -25,4 +25,31 @@
     <hr>
     -Category-:
     {{ post.category.name }}
+    <hr>
+
+    -Comments-
+    <br />
+    <br />
+    <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+            {% for comment in post.comments.all %}
+                <li class="list-group-item">
+                    #{{ forloop.counter }}
+                    <p>
+                        {{ comment.nick_name }}:
+                    </p>
+
+                    {{ comment.content|linebreaks }}
+
+                    <p>
+                        At: {{ comment.created_at }}
+                    </p>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center">
+                    目前這篇文章沒有任何留言
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}
