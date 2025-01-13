@@ -14,3 +14,9 @@ def set_cookies(request):
 
 def show_cookies(request):
     return HttpResponse(request.COOKIES.get("data"))
+
+
+def delete_cookies(request):
+    response = HttpResponse("Deleted.")
+    response.delete_cookie("data")
+    return response
