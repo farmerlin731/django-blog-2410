@@ -26,4 +26,7 @@ urlpatterns = [
     path("set-cookies/", user_views.set_cookies, name="set-cookies"),
     path("show-cookies", user_views.show_cookies, name="show-cookies"),
     path("delete-cookies/", user_views.delete_cookies, name="delete-cookies"),
+    path("set-session/", user_views.set_session, name="set_session"),
+    path("show-session/", user_views.show_session, name="show_session"),
+    path("delete-session/", user_views.delete_session, name="delete_session"),
 ]
