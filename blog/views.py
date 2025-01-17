@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from blog.filters import PostFilter
@@ -20,6 +21,7 @@ def post_list(request):
     return render(request, "blog/post_list.html", {"post_filter": post_filter})
 
 
+@login_required
 def post_create(request):
     form = PostForm(request.POST or None)
 
@@ -47,6 +49,7 @@ def post_detail(request, pk):
     )
 
 
+@login_required
 def post_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     form = PostForm(request.POST or None, instance=post)
@@ -59,9 +62,10 @@ def post_update(request, pk):
     return render(request, "blog/post_update.html", {"form": form})
 
 
+@login_required
 def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
     form = DeleteConfirmForm(request.POST or None)
+    post = get_object_or_404(Post, pk=pk)
 
     if form.is_valid():
         post.delete()
@@ -70,6 +74,7 @@ def post_delete(request, pk):
     return render(request, "blog/post_delete.html", {"form": form, "post": post})
 
 
+@login_required
 def post_create_comment(request, post_pk):
     post = get_object_or_404(Post, pk=post_pk)
 
