@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block subtitle %}
+    users
+{% endblock subtitle %}
+
+{% block body %}
+    <div class="row">
+        <div class="{% block page_size %}col-12{% endblock page_size %}">
+            <h1>
+                Users -
+                {% block page_header %}
+                {% endblock page_header %}
+            </h1>
+            <hr>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+{% endblock body %}
