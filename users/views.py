@@ -1,6 +1,8 @@
 import datetime
 
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.utils import timezone
 
 # Create your views here.
@@ -41,3 +43,11 @@ def delete_session(request):
     if "data" in request.session:
         del request.session["data"]
     return HttpResponse("Session deleted.")
+
+
+def register(request):
+    form = UserCreationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect("users:login")
+    return render(request, "users/register.html", {"form": form})

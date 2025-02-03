@@ -21,7 +21,7 @@
                     <form action="{% url "users:logout" %}" method="post">
                         {% csrf_token %}
                         <button class="nav-link" type="submit">
-                            Logout
+                            Logout  ({{ user.username }})
                         </button>
                     </form>
                 {% endif %}
