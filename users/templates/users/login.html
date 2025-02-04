@@ -7,6 +7,7 @@
 {% endblock page_size %}
 {% block content %}
     {% include "_form.html" with show_form_cancel_button=False %}
-    <a class="mt-5" href="{% url "users:register" %}">還沒有帳號嗎？註冊一個吧！</a>
-
+    <div class="mt-3">
+        <a href="{% url "users:register" %}">還沒有帳號嗎？註冊一個吧！</a>
+    </div>
 {% endblock content %}
