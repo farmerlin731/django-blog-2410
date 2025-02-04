@@ -1,0 +1,11 @@
+{% extends "user_base.html" %}
+{% block page_header %}
+    Password Change Done Page
+{% endblock page_header %}
+
+{% block content %}
+    <p>
+        成功！
+    </p>
+    <a href="{% url "blog:post-list" %}">繼續瀏覽網頁</a>
+{% endblock content %}

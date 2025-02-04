@@ -1,5 +1,5 @@
 from django.contrib.auth import views as django_auth_views
-from django.urls import path
+from django.urls import path, reverse_lazy
 
 from users import views as user_views
 
@@ -24,4 +24,20 @@ urlpatterns = [
     ),
     path("logout/", django_auth_views.LogoutView.as_view(), name="logout"),
     path("register/", user_views.register, name="register"),
+    path(
+        "password/change/",
+        django_auth_views.PasswordChangeView.as_view(
+            template_name="users/pwd_change.html",
+            success_url=reverse_lazy("users:password_change_done"),
+            # success_url=reverse_lazy("blog:post-list"),
+        ),
+        name="password_change",
+    ),
+    path(
+        "password/change/done",
+        django_auth_views.PasswordChangeDoneView.as_view(
+            template_name="users/pwd_change_done.html"
+        ),
+        name="password_change_done",
+    ),
 ]
