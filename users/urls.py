@@ -34,10 +34,27 @@ urlpatterns = [
         name="password_change",
     ),
     path(
-        "password/change/done",
+        "password/change/done/",
         django_auth_views.PasswordChangeDoneView.as_view(
             template_name="users/pwd_change_done.html"
         ),
         name="password_change_done",
+    ),
+    path(
+        "password/reset/",  # 填寫 email 要求重設密碼信件
+        django_auth_views.PasswordResetView.as_view(
+            template_name="users/password_reset.html",
+            email_template_name="users/email/password_reset_content.html",
+            subject_template_name="users/email/password_reset_subject.txt",
+            success_url=reverse_lazy("users:password_reset_done"),
+        ),
+        name="password_reset",
+    ),
+    path(
+        "password/reset/done/",  # 信件寄出後的頁面
+        django_auth_views.PasswordResetDoneView.as_view(
+            template_name="users/password_reset_done.html"
+        ),
+        name="password_reset_done",
     ),
 ]
