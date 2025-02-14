@@ -57,4 +57,19 @@ urlpatterns = [
         ),
         name="password_reset_done",
     ),
+    path(
+        "password/reset/<uidb64>/<token>/",  # 信件中的 url，讓使用者可以重設密碼
+        django_auth_views.PasswordResetConfirmView.as_view(
+            template_name="users/password_reset_confirm.html",
+            success_url=reverse_lazy("users:password_reset_complete"),
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "password/reset/complete/",  # 重設密碼成功後顯示的頁面
+        django_auth_views.PasswordResetCompleteView.as_view(
+            template_name="users/password_reset_complete.html",
+        ),
+        name="password_reset_complete",
+    ),
 ]
