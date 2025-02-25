@@ -136,3 +136,8 @@ LOGOUT_REDIRECT_URL = "blog:post-list"
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "email_output"
+
+# For the url which visitor use.
+MEDIA_URL = "media/"
+# For local depository
+MEDIA_ROOT = BASE_DIR / "media"

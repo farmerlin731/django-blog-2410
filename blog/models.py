@@ -29,6 +29,7 @@ class Post(models.Model):
         choices=Status,
         default=Status.PUBLIC,
     )
+    image = models.ImageField(blank=True, null=True, upload_to="posts/image/%Y/%m/%d/")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
