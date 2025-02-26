@@ -1,4 +1,14 @@
+import os
+import uuid
+
 from django.db import models
+from django.utils import timezone
+
+
+def post_image_path(instance, filename):
+    new_filename = f"{uuid.uuid4()}{os.path.splitext(filename)[1]}"
+    now = timezone.now()
+    return f"post_image/{now.strftime('%Y/%m/%d')}/{new_filename}"
 
 
 class Category(models.Model):
@@ -29,7 +39,8 @@ class Post(models.Model):
         choices=Status,
         default=Status.PUBLIC,
     )
-    image = models.ImageField(blank=True, null=True, upload_to="posts/image/%Y/%m/%d/")
+    # image = models.ImageField(blank=True, null=True, upload_to="posts/image/%Y/%m/%d/")
+    image = models.ImageField(blank=True, null=True, upload_to=post_image_path)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
