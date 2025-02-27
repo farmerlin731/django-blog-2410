@@ -3,7 +3,8 @@
 {% with form_method=form_method|default:"post"|lower %}
     <form action="{{ form_action|default:"" }}"
           method="{{ form_method }}"
-          class="form">
+          class="form"
+          enctype="multipart/form-data">
 
         {% if form_method == 'post' %}
             {% csrf_token %}

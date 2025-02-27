@@ -8,7 +8,8 @@ from django.utils import timezone
 def post_image_path(instance, filename):
     new_filename = f"{uuid.uuid4()}{os.path.splitext(filename)[1]}"
     now = timezone.now()
-    return f"post_image/{now.strftime('%Y/%m/%d')}/{new_filename}"
+    # return f"post_image/{now.strftime('%Y/%m/%d')}/{new_filename}"
+    return f"post_image/{now:%Y/%m/%d}/{new_filename}"
 
 
 class Category(models.Model):

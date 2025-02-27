@@ -23,7 +23,8 @@ def post_list(request):
 
 @login_required
 def post_create(request):
-    form = PostForm(request.POST or None)
+    # form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         # print("view", form.cleaned_data)
