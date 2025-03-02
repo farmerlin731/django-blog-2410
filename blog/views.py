@@ -53,7 +53,7 @@ def post_detail(request, pk):
 @login_required
 def post_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    form = PostForm(request.POST or None, instance=post)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
     if form.is_valid():
         form.save()

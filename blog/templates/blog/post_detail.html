@@ -11,6 +11,16 @@
     <a class="btn btn-outline-danger mb-4"
        href="{% url "blog:post-delete" pk=post.pk %}"
        role="button">Delete</a>
+
+    {% if post.image %}
+        <p>
+            <img height="100px"
+                 width="100px"
+                 src="{{ post.image.url }}"
+                 alt="{{ post.title }}">
+        </p>
+    {% endif %}
+
     <hr>
     -Title-:
     <br />
